@@ -14,6 +14,10 @@ export default class Notas {
         this.notificar();
     }
 
+    desincrever(func){
+        this._inscritos = this._inscritos.filter(f => f!== func);
+    }
+    
     inscrever(func) {
         this._inscritos.push(func);
     }
