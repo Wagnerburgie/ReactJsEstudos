@@ -6,12 +6,12 @@ export default class Notas {
     adicionarNota(titulo, texto, categoria) {
         const novaNota = new Nota(titulo, texto, categoria)
         this.notas.push(novaNota);
+        this.notificar();
     }
 
     deletarNota(index) {
-        let arrayNotas = this.notas;
-        arrayNotas.splice(index, 1);
-        this.notas = arrayNotas;
+        this.notas.splice(index, 1);
+        this.notificar();
     }
 
     inscrever(func) {
@@ -19,7 +19,7 @@ export default class Notas {
     }
 
     notificar() {
-        this._inscritos.forEach(func => func(this.categorias));
+        this._inscritos.forEach(func => func(this.notas));
     }
 }
 class Nota {
